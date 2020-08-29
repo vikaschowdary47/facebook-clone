@@ -4,6 +4,15 @@
   align-items: center;
   cursor: pointer;
 }
-.sidebarRow p {
+.sidebarRow h4 {
   margin-left: 20px;
+  font-weight: 600;
+}
+.sidebarRow:hover {
+  background-color: lightgray;
+  border-radius: 10px;
+}
+.sidebarRow .MuiSvgIcon-root {
+  font-size: xx-large;
+  color: #1278f3;
 }

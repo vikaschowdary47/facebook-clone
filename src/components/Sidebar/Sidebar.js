@@ -12,7 +12,11 @@ import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <SidebarRow src="lsls./ssf" title="vikas" />
+      <SidebarRow
+        src="https://lh3.googleusercontent.com/ogw/ADGmqu8vCjhhr6HbjrJ4sw9_m4TgrF_cErWrWpuOohit=s83-c-mo"
+        title="vikas"
+      />
+      <SidebarRow title="COVID-19 Info" Icon={LocalHospitalIcon} />
       <SidebarRow title="Pages" Icon={EmojiFlagsIcon} />
       <SidebarRow title="Friends" Icon={PeopleIcon} />
       <SidebarRow title="Messenger" Icon={ChatIcon} />
