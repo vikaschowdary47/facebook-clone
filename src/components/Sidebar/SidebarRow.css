@@ -1,0 +1,9 @@
+.sidebarRow {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+.sidebarRow p {
+  margin-left: 20px;
+}
