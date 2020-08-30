@@ -1,35 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Feed.css";
 import StoryReel from "./Story/StoryReel";
 import MessageSender from "./MessageSender/MessageSender";
 import Post from "./PostComp/Post";
+import db from "../../firebase";
 
 const Feed = () => {
+  const [posts, setPosts] = React.useState([]);
+
+  useEffect(() => {
+    db.collection("posts")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        setPosts(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        );
+      });
+  }, []);
+
   return (
     <div className="feed">
       <StoryReel />
       <MessageSender />
-      <Post
-        profilePic="https://lh3.googleusercontent.com/ogw/ADGmqu8vCjhhr6HbjrJ4sw9_m4TgrF_cErWrWpuOohit=s83-c-mo"
-        message="it works"
-        timestamp="timestamp"
-        username="vikas"
-        image="https://image.shutterstock.com/image-vector/vector-illustration-word-game-over-260nw-1230400006.jpg"
-      />
-      <Post
-        profilePic="https://lh3.googleusercontent.com/ogw/ADGmqu8vCjhhr6HbjrJ4sw9_m4TgrF_cErWrWpuOohit=s83-c-mo"
-        message="it works"
-        timestamp="timestamp"
-        username="vikas"
-        image="https://image.shutterstock.com/image-vector/vector-illustration-word-game-over-260nw-1230400006.jpg"
-      />
-      <Post
-        profilePic="https://lh3.googleusercontent.com/ogw/ADGmqu8vCjhhr6HbjrJ4sw9_m4TgrF_cErWrWpuOohit=s83-c-mo"
-        message="it works"
-        timestamp="timestamp"
-        username="vikas"
-        image="https://image.shutterstock.com/image-vector/vector-illustration-word-game-over-260nw-1230400006.jpg"
-      />
+      {posts.map((post) => (
+        <Post
+          key={post.id}
+          profilePic={post.data.profilePic}
+          message={post.data.message}
+          timestamp={post.data.timestamp}
+          username={post.data.username}
+          image={post.data.image}
+        />
+      ))}
     </div>
   );
 };

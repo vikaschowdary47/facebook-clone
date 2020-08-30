@@ -14,7 +14,7 @@ const Post = ({ profilePic, image, username, timestamp, message }) => {
         <Avatar src={profilePic} className="post__avatar" />
         <div className="post__info">
           <h4>{username}</h4>
-          <p>timestamp</p>
+          <p>{new Date(timestamp?.toDate()).toUTCString()}</p>
         </div>
       </div>
       <div className="post__bottom">
@@ -22,7 +22,7 @@ const Post = ({ profilePic, image, username, timestamp, message }) => {
       </div>
 
       <div className="post__image">
-        <img src={image} alt="images" />
+        {image ? <img src={image} alt="images" /> : null}
       </div>
 
       <div className="post__options">

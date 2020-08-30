@@ -5,10 +5,10 @@ import Feed from "./components/Feed/Feed";
 import Widgets from "./components/Widgets/Widget";
 import Login from "./components/Login";
 import "./App.css";
+import { useStateValue } from "./StateProvider";
 
 function App() {
-  const user = null;
-
+  const [{ user }, dispatch] = useStateValue();
   return (
     <div className="app">
       {!user ? (
