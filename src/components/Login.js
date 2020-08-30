@@ -1,7 +1,7 @@
 import React from "react";
 import "./Login.css";
 import { Button } from "@material-ui/core";
-import { auth, provider } from "./firebase";
+import { auth, provider } from "../firebase";
 
 const Login = () => {
   const signIn = () => {
@@ -11,7 +11,7 @@ const Login = () => {
         console.log(res);
       })
       .catch((err) => {
-        alert(err.message);
+        alert(err);
       });
   };
 
@@ -29,7 +29,7 @@ const Login = () => {
           alt="facebook"
         />
       </div>
-      <Button type="submit" onSubmit={signIn}>
+      <Button type="submit" onClick={signIn}>
         Sign In
       </Button>
     </div>
